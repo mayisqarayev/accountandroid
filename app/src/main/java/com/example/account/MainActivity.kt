@@ -39,8 +39,7 @@ class MainActivity : AppCompatActivity() {
 
         adapter = AccountAdapter(accounts,
             onStudentClick = { account -> openUpdateScreen(account) },
-            onDeleteClick = { account -> removeStudent(account) }
-        )
+            onDeleteClick = { account -> removeStudent(account) })
 
         binding.rcyStudents.layoutManager = LinearLayoutManager(this)
         binding.rcyStudents.adapter = adapter
@@ -69,11 +68,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateStudentInList(id: Int, name: String, surname: String) {
         val updatedList = accounts.map { account ->
-            if (account.id == id) {
-                account.copy(name = name, surname = surname)
-            } else {
-                account
-            }
+            if (account.id == id) account.copy(name = name, surname = surname)
+            else account
         }
         adapter.updateList(updatedList)
     }
